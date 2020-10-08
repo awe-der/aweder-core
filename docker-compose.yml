@@ -31,20 +31,6 @@ services:
         networks:
             - docker_network
 
-    # https://hub.docker.com/_/php
-    scheduler:
-        container_name: ukr_php_schedule
-        build: ./docker/scheduler
-        depends_on:
-          - php
-        environment:
-            PHP_MEMORY_LIMIT: '128M'
-            DB_HOST: 'mysql'
-        volumes:
-            - ./:/var/www/vhost/:cached
-        networks:
-            - docker_network
-
     # https://hub.docker.com/_/mysql
     mysql:
         container_name: ukr_mysql
@@ -71,20 +57,6 @@ services:
             - ./docker/redis/data:/data
         ports:
             - '6390:6379'
-        networks:
-            - docker_network
-
-    # https://hub.docker.com/_/php
-    queue:
-        container_name: ukr_php_queue
-        build: ./docker/queue
-        depends_on:
-            - php
-        environment:
-            PHP_MEMORY_LIMIT: '128M'
-            DB_HOST: 'mysql'
-        volumes:
-            - ./:/var/www/vhost/:cached
         networks:
             - docker_network
 
