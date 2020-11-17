@@ -89,4 +89,58 @@ class CreateOrderTest extends TestCase
         $response->assertStatus(Response::HTTP_CREATED);
         $this->assertCount(1, $merchant->orders()->get());
     }
+
+    /**
+     * @test
+     */
+    public function can_create_order_for_merchant_with_table_order(): void
+    {
+        $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
+        $this->assertCount(0, $merchant->orders()->get());
+
+        $orderItemPayload = [
+            'merchant' => $merchant->url_slug,
+            'is_table_service' => true,
+            'table_number' => '23'
+        ];
+
+        $response = $this->json(
+            'POST',
+            '/api/v1/order',
+            $orderItemPayload
+        );
+
+        $response->assertStatus(Response::HTTP_CREATED);
+        $this->assertDatabaseHas('orders', [
+            'merchant_id' => $merchant->id,
+            'table_number' => '23'
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function cannot_create_order_for_table_service_with_only_table_number(): void
+    {
+        $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
+        $this->assertCount(0, $merchant->orders()->get());
+
+        $orderItemPayload = [
+            'merchant' => $merchant->url_slug,
+            'table_number' => '23'
+        ];
+
+        $response = $this->json(
+            'POST',
+            '/api/v1/order',
+            $orderItemPayload
+        );
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+
+        $this->assertDatabaseMissing('orders', [
+            'merchant_id' => $merchant->id,
+            'table_number' => '23'
+        ]);
+    }
 }

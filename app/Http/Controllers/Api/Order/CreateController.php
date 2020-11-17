@@ -18,6 +18,7 @@ class CreateController extends Controller
     public function __invoke(ApiCreateOrderRequest $request, OrderContract $orderService): JsonResponse
     {
         $merchant = $request->getMerchant();
+        $payload = $request->validated();
 
         if (!$merchant) {
             return response()->json([
@@ -27,16 +28,22 @@ class CreateController extends Controller
 
         $order = $orderService->createNewOrderForMerchant($merchant);
 
-        if ($request->has('table_number')) {
-            $orderService->setTableNumberOnOrder($order, $request->get('table_number'));
+        if (isset($payload['is_table_service'])) {
+            if ($payload['is_table_service'] === true) {
+                $order->setTableService();
+            }
         }
 
-        if ($order instanceof Order) {
-            return response()->json($order->fresh(), Response::HTTP_CREATED);
+        if ($order->isTableService()) {
+            $orderService->setTableNumberOnOrder($order, $payload['table_number']);
         }
 
-        return response()->json([
-            'message' => 'Could not create order for merchant.'
-        ], Response::HTTP_BAD_REQUEST);
+        if (!$order instanceof Order) {
+            return response()->json([
+                'message' => 'Could not create order for merchant.'
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
+        return response()->json($order->fresh(), Response::HTTP_CREATED);
     }
 }
