@@ -303,6 +303,8 @@ class CategoryServiceTest extends TestCase
         $image = UploadedFile::fake()->image('testimage.png', 100, 100)->size(100);
         $this->categoryService->addImageToCategory($category, $image);
 
+        Storage::disk('s3')->assertExists($category->image);
+
         $this->assertDatabaseMissing('categories', [
             'id' => $category->id,
             'image' => null
