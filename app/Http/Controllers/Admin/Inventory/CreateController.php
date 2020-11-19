@@ -27,7 +27,6 @@ class CreateController extends Controller
             $request->session()->flash('success', 'The item has been added to your inventory');
         }
 
-
         return redirect()->to(route('admin.inventory'));
     }
 }

@@ -289,6 +289,17 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
+    public function can_add_subcategory_to_category_by_string(): void
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $this->assertCount(1, $merchant->categories()->get());
+        $existingCategory = $merchant->categories()->first();
+        $this->assertCount(0, $existingCategory->subcategories()->get());
+    }
+
+    /**
+     * @test
+     */
     public function can_remove_sub_category_for_merchant_but_still_view_items(): void
     {
         $merchant = $this->createAndReturnMerchant();

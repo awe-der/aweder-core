@@ -11222,6 +11222,24 @@
         {
                         return \Illuminate\Routing\Router::emailVerification();
         }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function blacklist($group = null)
+        {
+                        return \Illuminate\Routing\Router::blacklist($group);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function whitelist($group = null)
+        {
+                        return \Illuminate\Routing\Router::whitelist($group);
+        }
          
     }
             /**

@@ -98,12 +98,16 @@ class CategoryRepository implements CategoryContract
         return (bool) $merchant->categories()->save($category);
     }
 
+    public function getCategoryMaxOrderForMerchant(Merchant $merchant): int
+    {
+        return $merchant->categories()->max('order');
+    }
+
     public function addCategoryByStringToMerchant(Merchant $merchant, string $categoryTitle): bool
     {
-        $maxOrder = $merchant->categories()->max('order');
         $category = new Category([
             'title' => $categoryTitle,
-            'order' => $maxOrder + 1
+            'order' => $this->getCategoryMaxOrderForMerchant($merchant) + 1
         ]);
 
         return $this->addCategoryToMerchant($merchant, $category);
@@ -114,8 +118,25 @@ class CategoryRepository implements CategoryContract
         return (bool) $category->subcategories()->save($subCategory);
     }
 
+    public function addSubCategoryToCategoryByString(Category $category, string $subCategoryTitle): bool
+    {
+        $subcategory = new Category([
+            'title' => $subCategoryTitle
+        ]);
+
+        return $this->addSubCategoryToCategory($category, $subcategory);
+    }
+
     public function deleteCategory(Category $category): bool
     {
         return $category->delete();
+    }
+
+    public function getCategoryByOrderAndMerchant(Merchant $merchant, int $order): ?Category
+    {
+        return $this->getModel()
+            ->where('merchant_id', $merchant->id)
+            ->where('order', $order)
+            ->first();
     }
 }

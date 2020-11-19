@@ -41,7 +41,9 @@ class Category extends Model
         'merchant_id',
         'parent_category_id',
         'order',
-        'title'
+        'title',
+        'visible',
+        'image'
     ];
 
     public function inventories(): HasMany

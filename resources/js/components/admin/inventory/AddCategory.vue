@@ -9,6 +9,7 @@
     </a>
     <create-category
       :is-active="isActive"
+      :merchant="merchant"
       @close="hideCreateModal()"
     />
   </div>
@@ -23,6 +24,12 @@ export default {
   components: {
     CreateCategory,
     Add,
+  },
+  props: {
+    merchant: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {

@@ -38,6 +38,12 @@ interface CategoryContract
     public function updateCategories(array $categories, int $merchantId): bool;
 
     /**
+     * @param Merchant $merchant
+     * @return int
+     */
+    public function getCategoryMaxOrderForMerchant(Merchant $merchant): int;
+
+    /**
      * @param int $merchantId
      * @return Collection
      */
@@ -58,6 +64,13 @@ interface CategoryContract
     public function addSubCategoryToCategory(Category $category, Category $subCategory): bool;
 
     /**
+     * @param Category $category
+     * @param string $subCategoryTitle
+     * @return bool
+     */
+    public function addSubCategoryToCategoryByString(Category $category, string $subCategoryTitle): bool;
+
+    /**
      * Adds a Category to a Merchant by it's title and handles the ordering
      *
      * @param Merchant $merchant
@@ -71,4 +84,11 @@ interface CategoryContract
      * @return bool
      */
     public function deleteCategory(Category $category): bool;
+
+    /**
+     * @param Merchant $merchant
+     * @param int $order
+     * @return Category|null
+     */
+    public function getCategoryByOrderAndMerchant(Merchant $merchant, int $order): ?Category;
 }

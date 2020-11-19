@@ -81,6 +81,18 @@ trait HelperTrait
     }
 
     /**
+     * Used to convert strings to 0 or 1 for database persistance
+     *
+     * @param string $string
+     * @return bool
+     */
+    public function convertBooleanStringToInteger(string $string): int
+    {
+        $boolean = filter_var($string, FILTER_VALIDATE_BOOLEAN);
+        return (int)$boolean;
+    }
+
+    /**
      * @param string $timePeriod
      * @return array
      */
