@@ -34,7 +34,7 @@ class ViewController extends Controller
         }
 
         $merchant->load(
-            'categories',
+            'visibleCategories',
             'openingHours',
             'categories.inventoriesAvailable.variants',
             'categories.inventoriesAvailable.optionGroups.items'

@@ -77,7 +77,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryOne->id,
@@ -88,7 +88,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            $startersInventory = factory(Inventory::class)->create(
+            $startersInventory = factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryOne->id,
@@ -99,7 +99,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryOne->id,
@@ -110,7 +110,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryOne->id,
@@ -121,7 +121,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryOne->id,
@@ -133,7 +133,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryTwo->id,
@@ -146,7 +146,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryTwo->id,
@@ -157,7 +157,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryTwo->id,
@@ -168,7 +168,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryTwo->id,
@@ -179,7 +179,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            $mainsInventory = factory(Inventory::class)->create(
+            $mainsInventory = factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryTwo->id,
@@ -190,7 +190,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryThree->id,
@@ -201,7 +201,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryThree->id,
@@ -212,7 +212,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryThree->id,
@@ -223,7 +223,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryThree->id,
@@ -234,7 +234,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            $sidesInventory = factory(Inventory::class)->create(
+            $sidesInventory = factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryThree->id,
@@ -245,7 +245,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryFour->id,
@@ -256,7 +256,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryFour->id,
@@ -267,7 +267,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryFour->id,
@@ -278,7 +278,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            factory(Inventory::class)->create(
+            factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryFour->id,
@@ -289,7 +289,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
-            $dessertInventory = factory(Inventory::class)->create(
+            $dessertInventory = factory(Inventory::class)->state('variants')->create(
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryFour->id,

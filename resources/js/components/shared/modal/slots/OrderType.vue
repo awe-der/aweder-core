@@ -1,51 +1,68 @@
 <template>
   <modal
     :is-active="isActive"
+    class="modal--takeaway-type"
     size="small"
   >
-    <h2 class="body-xlarge margin-bottom-50">
-      Select take away type and time
-    </h2>
-
-    <div class="content">
-      <div class="col-span-6">
+    <header class="modal__header modal__header--no-border flex align-items-end">
+      <h2 class="header">
+        Select take away type and time
+      </h2>
+    </header>
+    <div class="modal__content">
+      <div class="modal__service-types">
         <button
-          class="button order-type__button"
-          :class="{ 'order-type__button--active': type === 'delivery' }"
+          class="service-button"
+          :class="{ 'service-button--active': type === 'delivery' }"
           @click="setType('delivery')"
         >
-          <span class="button__icon button__icon--left"><Delivery /></span>
-          <span class="button_content body-large">Delivery</span>
+          <span
+            class="service-button__icon icon icon--delivery"
+          >
+            <Delivery />
+          </span>
+          <span class="service-button__label">
+            Delivery
+          </span>
         </button>
-      </div>
-      <div class="col-span-6 sm-margin-top-20">
         <button
-          class="button order-type__button"
-          :class="{ 'order-type__button--active': type === 'collection' }"
+          class="service-button"
+          :class="{ 'service-button--active': type === 'collection' }"
           @click="setType('collection')"
         >
-          <span class="button__icon button__icon--left"><Collection /></span>
-          <span class="button_content body-large">Collection</span>
+          <span
+            class="service-button__icon icon icon--collection"
+          >
+            <Collection />
+          </span>
+          <span class="service-button__label">
+            Collection
+          </span>
         </button>
       </div>
-      <div class="col-span-12">
+      <div class="modal__service-time">
         <merchant-date-time-picker
           v-model="datetime"
           :merchant-hours="merchantHours"
         />
       </div>
-      <div class="col-span-12 margin-top-40">
-        <button
-          class="button button--wide"
-          :class="'button-solid--carnation'"
-          @click="save()"
-        >
-          <span class="button__content">Save</span>
-        </button>
-      </div>
-      <div class="col-span-12 margin-top-20">
-        <a :href="tableOrderUrl">Eating in? Click here.</a>
-      </div>
+    </div>
+    <div
+      class="modal__buttons modal__buttons--no-border flex flex-col"
+    >
+      <button
+        class="button"
+        :class="'button-solid--carnation'"
+        @click="save()"
+      >
+        <span class="button__content">Save</span>
+      </button>
+      <a
+        class="modal__addition-link"
+        :href="tableOrderUrl"
+      >
+        Eating in? Click here.
+      </a>
     </div>
   </modal>
 </template>

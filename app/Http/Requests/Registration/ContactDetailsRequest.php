@@ -24,8 +24,8 @@ class ContactDetailsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'customer-phone-number' => ['required'],
-            'mobile-number' => ['required'],
+            'customer-phone-number' => ['required', 'regex:/^\P{L}*$/'],
+            'mobile-number' => ['required', 'regex:/^\P{L}*$/'],
         ];
     }
 }

@@ -524,6 +524,14 @@ class Order extends Model
     }
 
     /**
+     * @return void
+     */
+    public function setTableService(): void
+    {
+        $this->is_table_service = 1;
+    }
+
+    /**
      * @param \DateInterval $dateInterval
      * @return string
      */

@@ -5,24 +5,23 @@
     :is-active="!!product"
     @close="close()"
   >
-    <div>
-      <h2 class="item-options__heading">
+    <header class="modal__header flex">
+      <h2 class="header">
         {{ product.title }}
       </h2>
-
-      <!-- Product variants -->
+    </header>
+    <div class="modal__content">
       <div
         v-if="product.variants.length"
-        class="item-options__field"
+        class="order-options"
       >
-        <h3 class="item-options__field-title">
-          Variants
+        <h3 class="order-options__title body-large">
+          Options
         </h3>
-
         <div
           v-for="variant in product.variants"
           :key="variant.id"
-          class="field field--radio margin-top-10"
+          class="field field--radio"
         >
           <input
             :id="variant.name"
@@ -33,11 +32,13 @@
             class="radio-input hidden"
           >
           <label
+            class="radio radio--standard radio--icon radio--icon-small"
             :for="variant.name"
-            class="radio radio--standard"
           >
-            <span class="radio__icon radio__icon--large" />
-            <span class="radio__label radio__label--large flex align-items-center">
+            <span
+              class="radio__icon radio__icon--medium"
+            />
+            <span class="radio__label checkbox__label--large">
               {{ variant.name }}
               <span class="separator separator--small" />
               {{ variant.price | currency }}
@@ -45,24 +46,22 @@
           </label>
         </div>
       </div>
-
-      <!-- Product options -->
       <div
         v-if="product.option_groups.length && options.length"
-        class="item-options__field"
+        class="order-options"
       >
         <div
           v-for="(group, index) in product.option_groups"
+          class="order-options__groups"
           :key="group.id"
         >
-          <h3 class="item-options__field-title">
-            {{ group.title }}
+          <h3 class="order-options__title body-large">
+            {{ group.name }}
           </h3>
-
           <div
             v-for="item in group.items"
             :key="item.id"
-            class="field margin-top-10"
+            class="field field--checkbox"
           >
             <input
               :id="item.name + item.id"
@@ -76,7 +75,9 @@
               :for="item.name + item.id"
               class="checkbox checkbox--standard"
             >
-              <span class="checkbox__icon checkbox__icon--large" />
+              <span class="checkbox__icon checkbox__icon--medium">
+                <Tick />
+              </span>
               <span class="checkbox__label checkbox__label--large flex align-items-center">
                 {{ item.name }}
                 <span class="separator separator--small" />
@@ -87,11 +88,7 @@
         </div>
       </div>
     </div>
-    <div>
-      <h3 class="item-options__field-title">
-        Quantity
-      </h3>
-
+    <div class="modal__buttons flex modal__buttons--qty">
       <div class="increment increment--large">
         <button
           class="increment__type increment__type--down"
@@ -113,7 +110,7 @@
       </div>
       <button
         ref="add_item"
-        class="item-options__submit"
+        class="button button-solid--carnation"
         @click="add()"
       >
         <span class="button__content">Add item</span>
@@ -127,6 +124,7 @@ import Modal from '@/js/components/shared/modal/Modal';
 import orderApi from '@/js/api/order/order';
 import Add from '@/js/components/svgs/Add';
 import Minus from '@/js/components/svgs/Minus';
+import Tick from '@/js/components/svgs/Tick';
 import { mapState } from 'vuex';
 
 export default {
@@ -134,6 +132,7 @@ export default {
     Modal,
     Add,
     Minus,
+    Tick,
   },
   props: {
     merchant: {

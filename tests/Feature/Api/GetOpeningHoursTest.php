@@ -79,8 +79,6 @@ class GetOpeningHoursTest extends TestCase
         ]);
 
         $response->assertJsonMissing([
-            'day_of_week' => 4,
-            'open_time' => '12:00',
             'is_delivery_hours' => 0
         ]);
     }

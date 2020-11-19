@@ -3,7 +3,12 @@
     class="field col-span-4 m-col-span-6 sm-col-span-6 row-start-2 sm-row-start-3"
     :class="{ 'field__error': exists === true }"
   >
-    <label class="label label--float" for="url_slug">Business's URL slug<sup>*</sup></label>
+    <label
+      class="label label--float"
+      for="url_slug"
+    >
+      Business's URL slug<sup>*</sup>
+    </label>
     <input
       class="text-input"
       v-model="urlSlug"

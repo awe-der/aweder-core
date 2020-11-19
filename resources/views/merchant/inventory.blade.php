@@ -37,10 +37,10 @@
         <header class="menu__categories">
             <div class="row flex align-content-stretch">
                 <div class="content align-content-stretch">
-                    @if (!$merchant->categories->isEmpty() && $merchant->categories->count() > 1)
+                    @if (!$merchant->visibleCategories->isEmpty() && $merchant->visibleCategories->count() > 1)
                         <nav class="menu__nav inline-flex align-content-stretch col-span-6 col-start-2 l-col-start-1">
                             <ul class="menu__cat-list">
-                                @foreach ($merchant->categories as $category)
+                                @foreach ($merchant->visibleCategories as $category)
                                     @if (!$category->inventoriesAvailable->isEmpty())
                                         <li class="menu__cat-item">
                                             <a href="#{{$category->title}}" class="menu__cat-link">{{ $category->title }}</a>
@@ -57,9 +57,9 @@
         <div class="menu__listing padding-bottom-140 sm-padding-bottom-60">
             <div class="row">
                 <div class="content align-items-start">
-                    @if (!$merchant->categories->isEmpty())
+                    @if (!$merchant->visibleCategories->isEmpty())
                         <div class="inventory col-span-6 col-start-2 l-col-start-1 m-col-span-7 sm-col-span-6 padding-top-100">
-                            @foreach ($merchant->categories as $category)
+                            @foreach ($merchant->visibleCategories as $category)
                                 @if (!$category->inventoriesAvailable->isEmpty())
                                     <div class="inventory__categories inline-flex flex-col width-full" id="{{$category->title}}">
                                         <header class="inventory__category-name">
@@ -100,7 +100,7 @@
     <item-options
         :merchant="{{ json_encode($merchant) }}"
     ></item-options>
-    
+
     <order-type
         v-if="{{ Request::segment(2) === 'take-away' ? 'true' : 'false' }}"
         :merchant="{{ json_encode($merchant) }}"

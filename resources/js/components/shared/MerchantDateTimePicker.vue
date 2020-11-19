@@ -1,6 +1,8 @@
 <template>
-  <div class="datetime-merchant">
-    <Timer width="30" />
+  <div class="service-time">
+    <span class="icon icon--time flex">
+      <Timer width="30" />
+    </span>
     <flat-pickr
       ref="datePicker"
       v-model="datetime"
@@ -8,7 +10,7 @@
       @on-change="dateChange"
     />
     <span
-      class="datetime-merchant__button"
+      class="service-time__button"
       @click="toggleCalendar"
     >
       Change

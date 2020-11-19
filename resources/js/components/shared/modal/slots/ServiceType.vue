@@ -15,7 +15,8 @@
         <a
           ref="table_service"
           :href="tableServiceUrl"
-          class="button service-type__button">
+          class="button service-type__button"
+        >
           <span class="button__icon button__icon--left"><Table /></span>
           <span class="button_content body-large">Table service</span>
         </a>

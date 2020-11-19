@@ -29,19 +29,21 @@ describe('MiniCart', () => {
     expect(wrapper.find('.cart--empty').exists()).toBe(true);
   });
 
-  it('shows cart options', async () => {
+  it('shows item name', async () => {
     const wrapper = createWrapper(productsWithVariantState);
 
-    expect(wrapper.find('.cart__option-title').text()).toContain('Option Group');
-    expect(wrapper.find('.cart__option-item').text()).toContain('Option 1');
-    expect(wrapper.find('.cart__option-item').text()).toContain('£4.99');
+    expect(wrapper.find('.cart__title').text()).toContain('Nachos,Cheese & Chilli');
+  });
+
+  it('shows cart options', async () => {
+    const wrapper = createWrapper(productsWithVariantState);
+    expect(wrapper.find('.cart__options--option').text()).toContain('Option 1');
   });
 
   it('shows item variant', async () => {
     const wrapper = createWrapper(productsWithVariantState);
 
-    expect(wrapper.find('.cart__title').text()).toContain('Variant - Nachos,Cheese & Chilli');
-    expect(wrapper.find('.cart__price').text()).toContain('£11.00');
+    expect(wrapper.find('.cart__options--variant').text()).toContain('Variant');
   });
 
   it('shows the totals', async () => {

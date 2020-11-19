@@ -1,18 +1,19 @@
-.datetime-merchant {
-  @extend .margin-top-40,
-  .flex,
+.service-time {
+  @extend .flex,
   .align-items-center;
 }
 
-.datetime-merchant__button {
-  @extend .margin-left-auto,
-  .color-carnation,
-  .font-600,
-  .cursor-pointer;
+.service-time .icon {
+  @extend .margin-right-20;
 }
 
-.datetime-merchant input {
-  @extend .margin-left-20,
-  .font-600,
-  .cursor-pointer;
+.service-time .form-control {
+  @extend .body-medium,
+  .font-gibson-med;
+}
+
+.service-time__button {
+  @extend .margin-left-auto,
+  .font-gibson-med,
+  .color-carnation;
 }

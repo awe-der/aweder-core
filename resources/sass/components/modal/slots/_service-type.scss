@@ -1,12 +1,78 @@
-.service-type__button {
-  @extend .button--large,
-  .button-outline--cloud-burst,
-  .button--hover-casablanca,
-  .button--focus-casablanca;
+.modal__service-types {
+  @extend .flex,
+  .wrap,
+  .margin-bottom-40;
 
-  width: 100%;
 }
 
-.service-type__button svg {
-  height: 35px;
+.service-button {
+  @extend .flex,
+  .align-items-center,
+  .justify-content-start,
+  .border-cloud-burst,
+  .border-width-1,
+  .border-solid,
+  .radius-5,
+  .padding-left-20,
+  .padding-right-20;
+  width: calc(50% - 20px);
+  height: 66px;
+
+  @include mq(m) {
+    width: calc(50% - 10px);
+  }
+  @include mq(s) {
+    @include _(s-width-full);
+    @include _(s-margin-bottom-20);
+    width: 100%;
+  }
+}
+
+.service-button:last-child {
+  @include mq(s) {
+    @include _(s-margin-bottom-0)
+  }
+}
+
+.service-button--active {
+  @extend .background-casablanca;
+}
+
+.service-button:nth-child(odd) {
+  @extend .margin-right-20;
+
+  @include mq(m) {
+    @include _(m-margin-right-10);
+  }
+  @include mq(s) {
+    @include _(s-margin-right-0);
+  }
+}
+
+.service-button:nth-child(even) {
+  @extend .margin-left-20;
+
+  @include mq(m) {
+    @include _(m-margin-left-10);
+  }
+  @include mq(s) {
+    @include _(s-margin-left-0);
+  }
+}
+
+.service-button__icon {
+  @extend .margin-right-20;
+}
+
+.service-button .icon--delivery svg {
+  width: 30px;
+}
+
+.service-button .icon--collection svg {
+  width: 34px;
+}
+
+.service-button__label {
+  @extend .body-medium,
+  .font-gibson-reg;
 }
