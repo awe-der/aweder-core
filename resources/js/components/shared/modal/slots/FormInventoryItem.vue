@@ -1,7 +1,7 @@
 <template>
   <modal
     :is-active="isActive"
-    class="modal--inventory"
+    class="modal--order"
     @close="close()"
   >
     <form

@@ -23,7 +23,7 @@
   .background-ghost-white;
   z-index: 1;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .modal__mask {
@@ -38,16 +38,44 @@
 }
 
 .modal__header {
-  @extend .border-bottom-solid,
+  @extend .background-ghost-white,
+  .border-bottom-solid,
   .border-width-1,
   .border-silver,
-  .padding-bottom-40,
-  .margin-bottom-40;
+  .padding-40;
+
+  @include mq(m) {
+    @include _(m-padding-20);
+  }
+}
+
+.modal__header .header {
+  @extend .body-xlarge;
+
+  @include mq(sm) {
+    @include rem2px(font-size, 2.4);
+    line-height: 1.5;
+  }
 }
 
 .modal__header.modal__header--no-border {
   @extend .border-none,
-  .padding-bottom-0;
+  .padding-bottom-0,
+  .margin-bottom-0;
+}
+
+.modal__content {
+  @extend .padding-40;
+  overflow-y: auto;
+
+  @include mq(m) {
+    @include _(m-padding-20);
+    @include _(m-margin-bottom-20);
+  }
+}
+
+.modal__content.modal__content--no-bottom {
+  @extend .padding-bottom-0;
 }
 
 .modal__addition-link {
@@ -56,4 +84,26 @@
   .body-small,
   .font-gibson-med,
   .text-underline;
+}
+
+.modal__buttons {
+  @extend .padding-40,
+  .background-ghost-white,
+  .border-top-solid,
+  .border-width-1,
+  .border-silver,;
+
+  @include mq(m) {
+    @include _(m-padding-20);
+    @include _(m-margin-bottom-20);
+  }
+}
+
+.modal__buttons.modal__buttons--no-border {
+  @extend .border-none,
+  .padding-top-0;
+}
+
+.modal__buttons--qty .button {
+  @extend .margin-left-auto;
 }

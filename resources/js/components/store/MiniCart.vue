@@ -1,24 +1,27 @@
 <template>
   <div
-    class="cart panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1"
+    class="cart panel panel--radius-bottom background-off-white col-span-3 col-start-9
+    l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1"
     :class="{ 'cart--empty': !quantity }"
   >
-    <div v-if="quantity">
-      <div
-        v-if="serviceType === 'take-away'"
-        class="cart-service flex align-items-center"
-      >
+    <div
+      v-if="serviceType === 'take-away'"
+      class="cart-service flex align-items-center"
+    >
+      <span class="icon icon--time">
         <Timer width="20" />
-        <span class="cart-service__content">
-          {{ orderType | capitalize }}, {{ datetime | moment('Do MMM, HH:mm') }}
-        </span>
-        <span
-          class="cart-service__button"
-          @click="changeOrderType()"
-        >
-          Change
-        </span>
-      </div>
+      </span>
+      <span class="cart-service__content">
+        {{ orderType | capitalize }}, {{ datetime | moment('Do MMM, HH:mm') }}
+      </span>
+      <span
+        class="cart-service__button"
+        @click="changeOrderType()"
+      >
+        Change
+      </span>
+    </div>
+    <div v-if="quantity">
       <div
         v-if="serviceType === 'table-order'"
         class="cart-service flex align-items-center"
@@ -41,7 +44,7 @@
         >
           <div class="cart__line">
             <p class="cart__title">
-              {{ item.variant.name }} - {{ item.product.title }}
+              {{ item.product.title }}
             </p>
             <div class="increment increment--small">
               <span
@@ -65,14 +68,24 @@
             <span class="cart__price text-right">{{ item.variant.price| currency }}</span>
           </div>
           <div
+            v-if="item.variant.price"
+            class="cart__options cart__options--variant"
+          >
+            <div
+              class="cart__option-item"
+            >
+              <p class="cart__subtitle">
+                <span class="icon icon-add"><Add /></span>
+                {{ item.variant.name }}
+              </p>
+            </div>
+          </div>
+          <div
             v-for="group in item.options"
             v-show="group.items.length"
             :key="group.group"
-            class="cart__options"
+            class="cart__options cart__options--option"
           >
-            <h5 class="cart__option-title">
-              {{ group.group }}
-            </h5>
             <div
               v-for="option in group.items"
               :key="option.id"
@@ -82,7 +95,6 @@
                 <span class="icon icon-add"><Add /></span>
                 {{ option.name }}
               </p>
-              <span class="cart__price text-right">{{ option.price_modified | currency }}</span>
             </div>
           </div>
         </div>

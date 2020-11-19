@@ -5,7 +5,7 @@
     size="small"
   >
     <header class="modal__header modal__header--no-border flex align-items-end">
-      <h2 class="body-xlarge">
+      <h2 class="header">
         Table service
       </h2>
     </header>
@@ -41,7 +41,7 @@
           </div>
         </validation-provider>
       </div>
-      <div class="modal__buttons flex flex-col">
+      <div class="modal__buttons modal__buttons--no-border flex flex-col">
         <button
           class="button button--wide"
           :class="invalid ? 'button-solid--silver' : 'button-solid--carnation'"

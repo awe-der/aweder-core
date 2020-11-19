@@ -5,7 +5,7 @@
     size="small"
   >
     <header class="modal__header modal__header--no-border flex align-items-end">
-      <h2 class="body-xlarge">
+      <h2 class="header">
         Select take away type and time
       </h2>
     </header>
@@ -40,7 +40,7 @@
           </span>
         </button>
       </div>
-      <div class="modal__service-time margin-bottom-40">
+      <div class="modal__service-time">
         <merchant-date-time-picker
           v-model="datetime"
           :merchant-hours="merchantHours"
@@ -48,7 +48,7 @@
       </div>
     </div>
     <div
-      class="modal__buttons flex flex-col"
+      class="modal__buttons modal__buttons--no-border flex flex-col"
     >
       <button
         class="button"

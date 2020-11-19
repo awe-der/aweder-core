@@ -24,3 +24,8 @@
 .checkout__merchant-image img {
   @extend .width-full;
 }
+
+.checkout__merchant-phone a {
+  @extend .color-cloud-burst,
+  .text-underline;
+}

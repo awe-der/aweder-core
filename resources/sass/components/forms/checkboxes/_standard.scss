@@ -40,7 +40,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.checkbox-input:checked ~ .checkbox--standard .checkbox__icon--small {
+.checkbox-input:checked ~ .checkbox--standard .checkbox__icon {
   background-color: $casablanca;
 }
 
@@ -50,6 +50,9 @@
   height: 50px;
 }
 
-.checkbox-input:checked ~ .checkbox--standard .checkbox__icon--large {
-  background-color: $casablanca;
+.checkbox--standard .checkbox__icon--medium{
+  @extend .margin-right-20;
+  width: 30px;
+  height: 30px;
 }
+

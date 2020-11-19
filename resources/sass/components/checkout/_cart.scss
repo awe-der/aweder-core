@@ -5,6 +5,9 @@
   .padding-top-40,
   .margin-top-20;
 }
+.checkout__cart .increment__value {
+  @extend .justify-content-start;
+}
 
 .checkout__cart .total {
   @extend .margin-bottom-0;

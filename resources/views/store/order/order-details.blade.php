@@ -6,7 +6,7 @@
                 <header class="checkout__header col-span-4 col-start-5 l-col-span-6 l-col-start-4 sm-col-start-1">
                     <h1 class="header-two color-carnation">Order details</h1>
                 </header>
-                <div class="checkout__merchant col-span-4 col-start-5 m-col-span-6 m-col-start-4 sm-col-start-1">
+                <div class="checkout__merchant col-span-4 col-start-5 l-col-span-6 l-col-start-4 sm-col-start-1">
                     <div class="checkout__merchant-image">
                         <img src="{{ $merchant->getTemporaryLogoLink() }}" alt="{{ $merchant->name }}">
                     </div>
@@ -19,11 +19,16 @@
                 <div class="checkout__confirmation col-span-4 col-start-5 l-col-span-6 l-col-start-4 sm-col-start-1 panel background-white shadow-order">
                     <div class="checkout__delivery">
                         <span class="icon icon--time flex">@svg('time', 'fill-cloud-burst')</span>
-                        <p> @if ($order->is_delivery)Delivery,
+                        <p> @if ($order->is_delivery || $order->is_collection)
+                                @if ($order->is_delivery)Delivery,
+                                @else
+                                    Collection,
+                                @endif
+                                today at {{ $order->getFormattedDeliveryTime($order->customer_requested_time) }}
                             @else
-                                Collection,
+                                Table Number
                             @endif
-                            today at {{ $order->getFormattedDeliveryTime($order->customer_requested_time) }}</p>
+                        </p>
                     </div>
                     <form class="checkout--form width-full"
                           action="{{ route('store.menu.order-details.post', ['merchant' => $merchant->url_slug, 'order' => $order->url_slug]) }}"
@@ -97,27 +102,27 @@
                             @if (!$order->items->isEmpty())
                                 <div class="checkout__cart">
                                     <div class="cart__order">
-                                        @foreach ($order->items as $item)--}}
+                                        @foreach ($order->items as $item)
                                         <div class="cart__item">
                                             <div class="cart__line">
                                                 <span class="increment__value">{{ $item->inventory->quantity }}</span>
                                                 <p class="cart__title">{{ $item->inventory->title }}</p>
-                                                <span class="cart__price text-right">{{ $item->getFormattedUKPriceAttribute($item->price) }}</span>
+                                                <span class="cart__price text-right">£{{ $item->getFormattedUKPriceAttribute($item->inventory->price) }}</span>
                                             </div>
                                             <div class="cart__options">
-                                                <h5 class="cart__option-title">Sauces</h5>
                                                 <div class="cart__option-item">
                                                     <p class="cart__subtitle">
                                                         <span class="icon icon-add">@svg('add', 'fill-cloud-burst')</span>
                                                         Curry sauce</p>
-                                                    <span class="cart__price text-right">£1.95</span>
                                                 </div>
                                             </div>
                                         </div>
                                         @endforeach
+                                        @if($order->customer_note)
                                         <div class="cart__notes">
                                             <p><span class="font-gibson-med">Notes</span> {{$order->customer_note}}</p>
                                         </div>
+                                        @endif
                                     </div>
                                     <div class="subtotal">
                                         <div class="subtotal__item">
@@ -137,7 +142,7 @@
                                         <div class="total__item">
                                             <p class="total__title">Total</p>
                                             <span class="cart__price text-right">
-                                                {{ $order->getFormattedUKPriceAttribute($order->total_cost, $merchant->delivery_cost) }}
+                                                £{{ $order->getFormattedUKPriceAttribute($order->total_cost, $merchant->delivery_cost) }}
                                             </span>
                                         </div>
                                     </div>

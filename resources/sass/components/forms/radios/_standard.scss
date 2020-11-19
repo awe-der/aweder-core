@@ -51,3 +51,16 @@
   width: 42px;
   height: 42px;
 }
+
+.radio--standard .radio__icon--medium {
+  @extend .margin-right-20;
+  width: 30px;
+  height: 30px;
+}
+
+.radio--standard .radio__icon--medium:before {
+  width: 24px;
+  height: 24px;
+}
+
+
