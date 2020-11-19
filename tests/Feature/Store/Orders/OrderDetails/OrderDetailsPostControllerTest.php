@@ -20,6 +20,8 @@ class OrderDetailsPostControllerTest extends TestCase
      */
     public function testPaymentCompletesWithFullDetails()
     {
+        Carbon::setTestNow(Carbon::createFromTime(9, 0));
+
         Mail::fake();
 
         $merchant = $this->createAndReturnMerchant(['allow_delivery' => 1, 'registration_stage' => 0]);
@@ -49,8 +51,6 @@ class OrderDetailsPostControllerTest extends TestCase
                 'order' => $order->url_slug
             ]
         );
-
-        Carbon::setTestNow(Carbon::createFromTime(9, 0));
 
         $postDetails = [
             'customer_name' => $this->faker->name,

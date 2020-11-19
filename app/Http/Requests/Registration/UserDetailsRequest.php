@@ -24,7 +24,7 @@ class UserDetailsRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'email:rfc,dns', 'unique:users,email'],
+            'email' => ['required', 'email:rfc', 'unique:users,email'],
             'password' => ['zxcvbn_min:2', 'required'],
             'password-confirmed' => ['required', 'same:password'],
         ];

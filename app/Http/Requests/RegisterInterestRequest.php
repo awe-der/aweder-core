@@ -27,7 +27,7 @@ class RegisterInterestRequest extends FormRequest
         return [
             'business' => ['required'],
             'location' => ['required'],
-            'email' => ['required', 'email:rfc,dns'],
+            'email' => ['required', 'email:rfc'],
             'business_type' => ['required', Rule::in(['restaurant', 'pub', 'cafe', 'retailer', 'other'])],
         ];
     }

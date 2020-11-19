@@ -25,7 +25,7 @@ class OrderPaymentRequest extends FormRequest
     {
         return [
             'customer_name' => ['required'],
-            'customer_email' => ['required', 'email:rfc,dns'],
+            'customer_email' => ['required', 'email:rfc'],
             'customer_address' => ['required'],
             'customer_phone' => ['required']
         ];
