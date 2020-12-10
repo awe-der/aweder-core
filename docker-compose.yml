@@ -59,6 +59,14 @@ services:
             - '6390:6379'
         networks:
             - docker_network
+            -
+    webgrind:
+        container_name: ukr_webgrind
+        image: jokkedk/webgrind
+        volumes:
+          - ./storage/xdebug:/tmp
+        ports:
+          - 8081:80
 
 networks:
     docker_network:
